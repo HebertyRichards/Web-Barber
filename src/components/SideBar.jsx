@@ -1,6 +1,6 @@
 import React from "react";
 import Modo from "./Modo";
-import "./sideBar.css";
+import "./style.css";
 
 function SideBar() {
   const openNav = () => {

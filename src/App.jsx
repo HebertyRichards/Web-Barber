@@ -11,8 +11,8 @@ function App() {
       <Active />
       <Text />
       </div>
-      <MainProduct />
       <Sobre />
+      <MainProduct />
       <Footer />
     </>
   );

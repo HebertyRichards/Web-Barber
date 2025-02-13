@@ -1,5 +1,5 @@
 import React from "react";
-import "./sideBar.css";
+import "./style.css";
 
 function Sobre() {
   return (
@@ -7,10 +7,9 @@ function Sobre() {
       <div className="sobre">
         <h2>Sobre Nós</h2>
         <p>
-          Texto Descritivo sobre sua barbearia, é possível modifcar depois de
-          acordo com sua preferencia através do paínel admin
+          Texto Descritivo sobre sua barbearia de forma resumida, vocÊ poderá
+          alterar conforme for a sua necessidade e o tipo de negócio
         </p>
-        <button className="btn-info">Mais Informações</button>
       </div>
     </>
   );

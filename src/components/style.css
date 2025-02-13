@@ -152,7 +152,15 @@ body,
   color: white;
   background-color: rgb(255, 187, 0);
   border: none;
+  cursor: pointer;
   padding: 15px;
+  transition: background-color 0.4s ease;
+}
+
+.contact-btn:hover {
+  background-color: transparent;
+  border: 1px solid rgb(245, 189, 37);
+  color: rgb(245, 189, 37);
 }
 
 .custom-navigation {
@@ -171,6 +179,7 @@ body,
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  transition: background-color 0.4s ease;
 }
 
 .custom-prev:hover,
@@ -178,10 +187,22 @@ body,
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.sobre {
+  background-color: antiquewhite;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.sobre p {
+  width: 30%;
+  margin: 0 auto;
+}
+
 #main-swiper {
   width: 50%;
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 2%;
   box-shadow: 0 4px 8px rgba(0, 0, 1, 1.1);
   background-color: #2e2e2e;
   padding: 20px;
@@ -208,22 +229,10 @@ body,
   z-index: 10;
 }
 
-.btn-prev,
-.btn-next {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 0 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-
 .services {
   width: 30%;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 5%;
   text-align: center;
 }
 
@@ -235,20 +244,43 @@ body,
   font-size: 1.5em;
 }
 
-.sobre {
-  background-color: antiquewhite;
-  width: 50%;
+.redirect {
   margin: 0 auto;
-  text-align: center;
-  padding: 20px;
-  margin-top: 10%;
-}
-
-.btn-info {
-  background-color: rgb(255, 187, 0);
+  background-color: rgb(245, 189, 37);
+  font-weight: bold;
+  color: white;
   border: none;
   padding: 15px;
-  font-weight: bold;
+  border-radius: 20em;
+  width: 50%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.redirect:hover {
+  background-color: transparent;
+  border: 1px solid rgb(245, 189, 37);
+  color: rgb(245, 189, 37);
+}
+
+.btn-prev,
+.btn-next {
+  transition: 0.4s;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.4s ease;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 footer {
@@ -259,7 +291,7 @@ footer {
   background-color: #000000;
   text-align: center;
   color: white;
-  margin-top: 30px;
+  margin-top: 5%;
 }
 
 footer img {

@@ -34,36 +34,42 @@ const MainProduct = () => {
           <div className="slide2">
             <h2>Corte</h2>
             <p>R$ 30,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
             <h2>Barba</h2>
             <p>R$ 10,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
             <h2>Sobrancelha</h2>
             <p>R$ 5,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
             <h2>Penteado</h2>
             <p>R$ 20,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
             <h2>Platinado</h2>
             <p>R$ 100,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
             <h2>Progressiva</h2>
             <p>R$ 70,00</p>
+            <button className='redirect'>Agendar</button>
           </div>
         </SwiperSlide>
         <div className="custom-navigation2">
