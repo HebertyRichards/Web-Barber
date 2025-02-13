@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./sideBar.css";
 import {
   faChevronLeft,
   faChevronRight,
@@ -24,8 +25,7 @@ const Text = () => {
         delay: 5000, 
         disableOnInteraction: false, 
       }}
-    >
-      <SwiperSlide>
+      >      <SwiperSlide>
         <div className="slide">
           <h2 id="p1">Cortes profissionais</h2>
           <p id="f1">

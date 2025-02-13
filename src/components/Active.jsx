@@ -5,7 +5,6 @@ import SideBar2 from './SideBar2';
 const Active = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Verifica a largura da tela ao carregar e ao redimensionar
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -24,5 +23,6 @@ const Active = () => {
     </div>
   );
 };
+
 
 export default Active;

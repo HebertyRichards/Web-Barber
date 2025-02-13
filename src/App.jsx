@@ -1,11 +1,19 @@
 import Active from "./components/Active";
 import Text from "./components/SliderText";
+import MainProduct from "./components/MainProduct";
+import Sobre from "./components/Sobre";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-    <Active />
-    <Text />
+      <div className="back">
+      <Active />
+      <Text />
+      </div>
+      <MainProduct />
+      <Sobre />
+      <Footer />
     </>
   );
 }

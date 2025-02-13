@@ -1,22 +1,24 @@
-import React from 'react';
+import React from "react";
 import Modo from "./Modo";
-import "./sideBar.css";  
+import "./sideBar.css";
 
 function SideBar() {
   const openNav = () => {
-    document.querySelector(".sidebar").style.width = "250px";  // Alterando o width da sidebar
+    document.querySelector(".sidebar").style.width = "250px"; // Alterando o width da sidebar
   };
 
   const closeNav = () => {
-    document.querySelector(".sidebar").style.width = "0";  
+    document.querySelector(".sidebar").style.width = "0";
   };
 
   return (
     <>
-      <Modo openNav={openNav} />  
+      <Modo openNav={openNav} />
       <div className="sidebar" style={{ width: "0" }}>
-        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>×</a>
-        <img id='icon2'src="./src/imagens/icon.png" alt=''></img>
+        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
+          ×
+        </a>
+        <img id="icon2" src="./public/icon.png" alt=""></img>
         <a href="index.html">Home</a>
         <a href="agendamento.html">Agendamentos</a>
         <a href="#">Assinaturas</a>
