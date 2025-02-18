@@ -12,11 +12,24 @@ body,
       rgb(0, 0, 0) 0%,
       rgba(255, 126, 95, 0) 100%
     ),
-    url("./public/1.png");
+    url("./img/1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: 100vh;
+}
+
+.back2 {
+  background: linear-gradient(
+      to right,
+      rgb(0, 0, 0) 0%,
+      rgba(255, 126, 95, 0) 100%
+    ),
+    url("./img/1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 10px;
 }
 
 #icon,
@@ -24,7 +37,7 @@ body,
   display: block;
   width: 50px;
   height: 50px;
-  background-image: url("./src/imagens/icon.png");
+  background-image: url("./img/icon.png");
   background-size: cover;
   background-position: center;
 }
@@ -281,6 +294,30 @@ body,
 .btn-prev:hover,
 .btn-next:hover {
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.info-prods {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.info-prods h2 {
+  font-size: 2.5em;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.info-services {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.info-services h2 {
+  font-size: 2.5em;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 footer {

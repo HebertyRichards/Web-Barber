@@ -1,6 +1,6 @@
 import React from "react";
 import Modo from "./Modo";
-import "./style.css";
+import "../style.css";
 
 function SideBar() {
   const openNav = () => {
@@ -18,13 +18,11 @@ function SideBar() {
         <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
           ×
         </a>
-        <img id="icon2" src="./public/icon.png" alt=""></img>
+        <img id="icon2" src="./img/icon.png" alt=""></img>
         <a href="index.html">Home</a>
         <a href="agendamento.html">Agendamentos</a>
-        <a href="#">Assinaturas</a>
         <a href="produtos.html">Produtos</a>
         <a href="servicos.html">Serviços</a>
-        <a href="login.html">Acesso</a>
       </div>
     </>
   );

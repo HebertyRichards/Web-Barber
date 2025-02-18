@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./style.css";
+import "../style.css";
 import {
   faChevronLeft,
   faChevronRight,

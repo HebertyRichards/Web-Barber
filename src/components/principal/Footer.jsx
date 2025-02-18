@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "../style.css";
 
 function Footer() {
   return (
@@ -16,15 +16,15 @@ function Footer() {
         <div className="menu2">
           <h2>Contato</h2>
           <p>
-            <img src="/public/mapa.png" alt="endereço"></img>São mateus - São
+            <img src="./img/mapa.png" alt="endereço"></img>São mateus - São
             Paulo
           </p>
           <p>
-            <img src="/public/whatsapp.png" alt="whatsapp"></img>WhatsApp: (11)
+            <img src="./img/whatsapp.png" alt="whatsapp"></img>WhatsApp: (11)
             00000-0000
           </p>
           <p>
-            <img src="./public/msg2.png" alt=""></img>
+            <img src="./img/msg2.png" alt=""></img>
             barbershop@gmail.com
           </p>
         </div>
