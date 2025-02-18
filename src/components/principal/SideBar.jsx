@@ -18,11 +18,11 @@ function SideBar() {
         <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
           ×
         </a>
-        <img id="icon2" src="./img/icon.png" alt=""></img>
-        <a href="index.html">Home</a>
-        <a href="agendamento.html">Agendamentos</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="servicos.html">Serviços</a>
+        <img id="icon2" src="/img/icon.png" alt=""></img>
+        <a href="/index.html">Home</a>
+        <a href="/agendamento.html">Agendamentos</a>
+        <a href="/produtos.html">Produtos</a>
+        <a href="/servicos.html">Serviços</a>
       </div>
     </>
   );
