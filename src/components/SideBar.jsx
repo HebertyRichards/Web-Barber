@@ -1,5 +1,6 @@
 import React from "react";
 import Modo from "./Modo";
+import { Link } from "react-router-dom";
 import "../style.css";
 
 function SideBar() {
@@ -18,11 +19,11 @@ function SideBar() {
         <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
           ×
         </a>
-        <img id="icon2" src="/img/icon.png" alt=""></img>
-        <a href="/index.html">Home</a>
-        <a href="/agendamento.html">Agendamentos</a>
-        <a href="/produtos.html">Produtos</a>
-        <a href="/servicos.html">Serviços</a>
+        <img id="icon2" src="../src/assets/icon.png" alt=""></img>
+        <Link to='/'>Home</Link>
+        <Link to='/agendamento'>Agendamento</Link>
+        <Link to='/produtos'>Produtos</Link>
+        <Link to='/servicos'>Serviços</Link>
       </div>
     </>
   );

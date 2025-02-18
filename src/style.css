@@ -12,7 +12,7 @@ body,
       rgb(0, 0, 0) 0%,
       rgba(255, 126, 95, 0) 100%
     ),
-    url("./img/1.png");
+    url("../src/assets/1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -25,10 +25,9 @@ body,
       rgb(0, 0, 0) 0%,
       rgba(255, 126, 95, 0) 100%
     ),
-    url("./img/1.png");
+    url("../src/assets/1.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
   padding: 10px;
 }
 
@@ -37,7 +36,7 @@ body,
   display: block;
   width: 50px;
   height: 50px;
-  background-image: url("./img/icon.png");
+  background-image: url("../src/assets/icon.png");
   background-size: cover;
   background-position: center;
 }
@@ -62,10 +61,6 @@ body,
   justify-content: center;
 }
 
-.container a {
-  margin-top: 15px;
-}
-
 .container img {
   margin-top: 10px;
 }
@@ -79,14 +74,19 @@ body,
   margin-top: 10px;
 }
 
+.container .barber {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
 .container a {
   margin-left: 50px;
   color: white;
   border: none;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 25px;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 #mySidebar img {
@@ -368,7 +368,7 @@ footer img {
 }
 
 #facebook {
-  background-image: url("/public/Facebook.png");
+  background-image: url("../src/assets/Facebook.png");
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
@@ -379,7 +379,7 @@ footer img {
 }
 
 #instagram {
-  background-image: url("/public/instagram.png");
+  background-image: url("../src/assets/instagram.png");
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
@@ -390,7 +390,7 @@ footer img {
 }
 
 #linkedin {
-  background-image: url("/public/linkedin.png");
+  background-image: url("../src/assets/linkedin.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 5px;

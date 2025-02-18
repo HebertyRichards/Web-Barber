@@ -16,15 +16,15 @@ function Footer() {
         <div className="menu2">
           <h2>Contato</h2>
           <p>
-            <img src="/img/mapa.png" alt="endereço"></img>São mateus - São
-            Paulo
+            <img src="../assets/mapa.png" alt="Endereço"></img>São mateus -
+            São Paulo
           </p>
           <p>
-            <img src="/img/whatsapp.png" alt="whatsapp"></img>WhatsApp: (11)
-            00000-0000
+            <img src="../assets/whatsapp.png" alt="WhatsApp"></img>
+            WhatsApp: (11) 00000-0000
           </p>
           <p>
-            <img src="/img/msg2.png" alt=""></img>
+            <img src="../assets/msg2.png" alt="Email"></img>
             barbershop@gmail.com
           </p>
         </div>

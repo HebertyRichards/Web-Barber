@@ -1,9 +1,12 @@
-import React from "react";
-import "../style.css";
+import Active from "../../header/Active";
+import Footer from "../../footer/Footer";
 
-function Product() {
+function Produtos() {
   return (
     <>
+    <div className="back2">
+      <Active />
+    </div>
       <div className="info-prods">
         <h2>Nossos Produtos</h2>
         <p>
@@ -12,8 +15,9 @@ function Product() {
         </p>
       </div>
       <div className="catalog-prods"></div>
+      <Footer />
     </>
   );
 }
 
-export default Product;
+export default Produtos;
