@@ -5,7 +5,7 @@ import "../style.css";
 
 function SideBar() {
   const openNav = () => {
-    document.querySelector(".sidebar").style.width = "250px"; // Alterando o width da sidebar
+    document.querySelector(".sidebar").style.width = "250px"; 
   };
 
   const closeNav = () => {

@@ -7,7 +7,6 @@ function Agendamento() {
       <div className="back2">
         <Active />
       </div>
-      <h2>Agendamento</h2>
       <Footer />
     </>
   );

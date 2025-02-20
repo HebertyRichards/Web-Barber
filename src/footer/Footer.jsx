@@ -16,8 +16,8 @@ function Footer() {
         <div className="menu2">
           <h2>Contato</h2>
           <p>
-            <img src="../assets/mapa.png" alt="Endereço"></img>São mateus -
-            São Paulo
+            <img src="../assets/mapa.png" alt="Endereço"></img>São mateus - São
+            Paulo
           </p>
           <p>
             <img src="../assets/whatsapp.png" alt="WhatsApp"></img>
