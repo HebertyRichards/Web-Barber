@@ -172,7 +172,9 @@ body,
   transition: background-color 0.4s ease;
 }
 
-.contact-btn:hover {
+.contact-btn:hover,
+.Prods button:hover,
+.redirect:hover  {
   background-color: transparent;
   border: 1px solid rgb(245, 189, 37);
   color: rgb(245, 189, 37);
@@ -263,7 +265,6 @@ body,
 .redirect {
   margin: 0 auto;
   background-color: rgb(245, 189, 37);
-  font-weight: bold;
   color: white;
   border: none;
   padding: 15px;
@@ -271,12 +272,7 @@ body,
   width: 50%;
   cursor: pointer;
   transition: background-color 0.4s ease;
-}
-
-.redirect:hover {
-  background-color: transparent;
-  border: 1px solid rgb(245, 189, 37);
-  color: rgb(245, 189, 37);
+  text-decoration: none;
 }
 
 .btn-prev,
@@ -317,6 +313,74 @@ body,
   margin: 0 auto;
   margin-top: 5%;
   text-align: center;
+}
+
+.maps {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.leaflet-container {
+  margin: 0 auto;
+  margin-top: 3%;
+  height: 500px;
+  width: 60%;
+  border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.produtos {
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Prods{
+display: flex;
+flex-direction: column;
+align-items: center; 
+}
+
+.Prods img {
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 15);
+}
+
+.Prods button {
+  background-color: rgb(255, 187, 0);
+  padding: 10px;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.btn-prods {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.btn-prods a {
+background-color: black;
+color: white;
+padding: 15px;
+font-size: 1.3em;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: background-color 0.4s ease;
+}
+
+.btn-prods a:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 footer {
@@ -483,6 +547,30 @@ footer img {
   .menu2 {
     width: 80%;
   }
+
+  .leaflet-container {
+    height: 200px;
+    width: 90%;
+  }
+
+  .products {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  
+  .Prods img {
+    margin-top: 10%;
+    width: 200px;
+  }
+  
+  .Prods button {
+    padding: 10px;
+  }
+
+  .btn-prods a {
+    margin: 10%;
+    padding: 5px;
+    }
 
   footer {
     flex-wrap: wrap;
