@@ -174,7 +174,9 @@ body,
 
 .contact-btn:hover,
 .Prods button:hover,
-.redirect:hover  {
+.redirect:hover,
+button[type="submit"]:hover,
+.produtos2 button:hover {
   background-color: transparent;
   border: 1px solid rgb(245, 189, 37);
   color: rgb(245, 189, 37);
@@ -273,6 +275,7 @@ body,
   cursor: pointer;
   transition: background-color 0.4s ease;
   text-decoration: none;
+  text-align: center;
 }
 
 .btn-prev,
@@ -308,6 +311,11 @@ body,
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
+.info-prods p,
+.info-services p {
+  font-size: 1.5em;
+}
+
 .info-services {
   width: 50%;
   margin: 0 auto;
@@ -338,10 +346,10 @@ body,
   justify-content: space-evenly;
 }
 
-.Prods{
-display: flex;
-flex-direction: column;
-align-items: center; 
+.Prods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Prods img {
@@ -366,21 +374,133 @@ align-items: center;
 }
 
 .btn-prods a {
-background-color: black;
-color: white;
-padding: 15px;
-font-size: 1.3em;
-border-radius: 20px;
-border: none;
-cursor: pointer;
-text-decoration: none;
-transition: background-color 0.4s ease;
+  background-color: black;
+  color: white;
+  padding: 15px;
+  font-size: 1.3em;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.4s ease;
 }
 
 .btn-prods a:hover {
   background-color: white;
   color: black;
   border: 1px solid black;
+}
+
+.back-forms {
+  background-color: rgb(44, 44, 44);
+  color: white;
+  padding: 20px;
+}
+
+#formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.date-hour #horario,
+.date-hour input[type="date"] {
+  margin-left: 20px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#nome,
+#telefone {
+  border: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid whitesmoke;
+  padding: 10px;
+  font-size: 1em;
+  color: white;
+  outline: none;
+}
+
+#nome,
+.cut-infos,
+.barber-infos {
+  margin: 10px;
+}
+
+#nome::placeholder,
+#telefone::placeholder {
+  color: rgb(158, 158, 158);
+  font-weight: bold;
+}
+
+#horario,
+input[type="date"] {
+  border: none;
+}
+
+#barbeiro,
+#servico {
+  padding: 10px;
+}
+
+#servico {
+  margin: 10px;
+}
+
+button[type="submit"] {
+  margin: 0 auto;
+  background-color: rgb(245, 189, 37);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 20em;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  text-decoration: none;
+}
+
+.catalog-services,
+.catalog-services2,
+.catalog-prods,
+.catalog-prods2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 7%;
+}
+
+.servicos2 img,
+.produtos2 img {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 15);
+}
+
+.products {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.servicos2,
+.produtos2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.produtos2 button {
+  margin: 0 auto;
+  background-color: rgb(245, 189, 37);
+  color: white;
+  border: none;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  text-decoration: none;
 }
 
 footer {
@@ -510,8 +630,11 @@ footer img {
   .slide {
     width: 40%;
   }
-}
 
+  #formulario {
+    width: 70%;
+  }
+}
 @media (max-width: 800px) {
   .slide {
     width: 70%;
@@ -534,6 +657,7 @@ footer img {
   .services p {
     font-size: 1em;
   }
+
   #main-swiper {
     width: 90%;
     padding: 10px;
@@ -557,12 +681,12 @@ footer img {
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
-  
+
   .Prods img {
     margin-top: 10%;
     width: 200px;
   }
-  
+
   .Prods button {
     padding: 10px;
   }
@@ -570,9 +694,53 @@ footer img {
   .btn-prods a {
     margin: 10%;
     padding: 5px;
-    }
+  }
+
+  .back-forms {
+    padding: 10px;
+  }
+
+  #formulario {
+    width: 90%;
+  }
+
+  .date-hour #horario,
+  .date-hour input[type="date"] {
+    margin-left: 0px;
+  }
+
+  #nome,
+  #telefone {
+    padding: 5px;
+  }
+
+  #barbeiro,
+  #servico {
+    padding: 5px;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+  }
+
+  .info-services h2,
+  .info-prods h2 {
+    font-size: 1.5em;
+  }
+
+  .info-prods p,
+  .info-services p {
+    font-size: 1em;
+  }
+
+  .servicos2,
+  .produtos2 {
+    margin-top: 10%;
+  }
 
   footer {
+    padding: 15px;
+    gap: 15px;
     flex-wrap: wrap;
   }
 }
