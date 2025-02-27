@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
 
-const cors = require("cors");
+const app = express();
 
+app.use(express.json());
 app.use(
   cors({
     origin: "https://web-barber-xi.vercel.app",
@@ -11,6 +12,7 @@ app.use(
     allowedHeaders: "Content-Type,Authorization",
   })
 );
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -49,5 +51,5 @@ app.post("/agendar", (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
