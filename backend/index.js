@@ -50,7 +50,7 @@ app.post("/agendar", (req, res) => {
   );
 });
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, "0.0.0.0", () => {
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
