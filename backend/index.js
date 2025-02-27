@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
+const fetch = require("node-fetch");
+const twilio = require("twilio");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -48,26 +50,21 @@ app.post("/agendar", (req, res) => {
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
 
-      // ✅ Enviar SMS usando Textbelt
-      try {
-        const response = await fetch("https://textbelt.com/text", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            phone: `+55${telefone}`, // Formato: +55 (código do Brasil) + número
-            message: `Olá ${nome_cliente}, seu agendamento para ${servico} com ${barbeiro} foi confirmado para ${data_agendamento} às ${horario}.`,
-            key: "textbelt", // Chave de teste gratuita
-          }),
-        });
+      const client = new twilio(
+        process.env.TWILIO_ACCOUNT_SID,
+        process.env.TWILIO_AUTH_TOKEN
+      );
+      const mensagem = `Olá ${nome_cliente}, seu agendamento para ${servico} com ${barbeiro} foi confirmado para ${data_agendamento} às ${horario}.`;
 
-        const result = await response.json();
-        if (result.success) {
-          console.log("SMS enviado com sucesso!");
-        } else {
-          console.error("Erro ao enviar SMS:", result);
-        }
-      } catch (smsError) {
-        console.error("Erro ao processar envio de SMS:", smsError);
+      try {
+        const message = await client.messages.create({
+          body: mensagem,
+          from: process.env.TWILIO_PHONE_NUMBER,
+          to: `+55${telefone}`,
+        });
+        console.log("SMS enviado com sucesso:", message.sid);
+      } catch (error) {
+        console.error("Erro ao enviar SMS:", error);
       }
 
       res.status(201).json({ message: "Agendamento criado com sucesso!" });

@@ -52,7 +52,7 @@ function Agendamento() {
   };
 
   const formatarTelefone = (valor) => {
-    valor = valor.replace(/\D/g, ""); // Remove caracteres não numéricos
+    valor = valor.replace(/\D/g, "");
 
     if (valor.length > 2) {
       valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
@@ -62,6 +62,60 @@ function Agendamento() {
     }
 
     return valor;
+  };
+
+  const renderHorarios = () => {
+    const horarios = [
+      "08:00",
+      "08:30",
+      "09:00",
+      "09:30",
+      "10:00",
+      "10:30",
+      "11:00",
+      "11:30",
+      "12:00",
+      "12:30",
+      "13:00",
+      "13:30",
+      "14:00",
+      "14:30",
+      "15:00",
+      "15:30",
+      "16:00",
+      "16:30",
+      "17:00",
+      "17:30",
+      "18:00",
+      "18:30",
+      "19:00",
+      "19:30",
+    ];
+
+    const horaAtual = new Date();
+    const horaAtualFormatada = `${horaAtual.getHours()}:${String(
+      horaAtual.getMinutes()
+    ).padStart(2, "0")}`;
+    const dataAtual = `${horaAtual.getFullYear()}-${String(
+      horaAtual.getMonth() + 1
+    ).padStart(2, "0")}-${String(horaAtual.getDate()).padStart(2, "0")}`;
+
+    const horarioDeHoje = dataAtual === getDataAtual();
+
+    return horarios
+      .filter((horario) => {
+        if (horarioDeHoje) {
+          // No dia atual, só exibe horários maiores que a hora atual
+          return horario > horaAtualFormatada;
+        }
+        // Nos dias seguintes, exibe todos os horários
+        return true;
+      })
+      .map((horario) => (
+        <option key={horario} value={horario}>
+          {horario}
+        </option>
+      ));
   };
 
   return (
@@ -107,30 +161,7 @@ function Agendamento() {
               onChange={(e) => setHorario(e.target.value)}
             >
               <option value="">Horário</option>
-              <option value="08:00">08:00</option>
-              <option value="08:30">08:30</option>
-              <option value="09:00">09:00</option>
-              <option value="09:30">09:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="11:30">12:00</option>
-              <option value="11:30">12:30</option>
-              <option value="11:30">13:00</option>
-              <option value="11:30">13:30</option>
-              <option value="11:30">14:00</option>
-              <option value="11:30">14:30</option>
-              <option value="11:30">15:00</option>
-              <option value="11:30">15:30</option>
-              <option value="11:30">16:00</option>
-              <option value="11:30">16:30</option>
-              <option value="11:30">17:00</option>
-              <option value="11:30">17:30</option>
-              <option value="11:30">18:00</option>
-              <option value="11:30">18:30</option>
-              <option value="11:30">19:00</option>
-              <option value="11:30">19:30</option>
+              {renderHorarios()}
             </select>
           </div>
           <div className="cut-info">
@@ -153,6 +184,7 @@ function Agendamento() {
               <option value="corte_barba">Penteado - R$20,00</option>
               <option value="corte_barba">Máquina Geral - R$15,00</option>
               <option value="corte_barba">Luzes - R$70,00</option>
+              <option value="corte_barba">Hidratação - R$20,00</option>
             </select>
           </div>
           <div className="barber-infos">
