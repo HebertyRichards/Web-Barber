@@ -105,10 +105,8 @@ function Agendamento() {
     return horarios
       .filter((horario) => {
         if (horarioDeHoje) {
-          // No dia atual, só exibe horários maiores que a hora atual
           return horario > horaAtualFormatada;
         }
-        // Nos dias seguintes, exibe todos os horários
         return true;
       })
       .map((horario) => (

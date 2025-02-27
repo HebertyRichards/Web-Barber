@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const fetch = require("node-fetch");
-const twilio = require("twilio");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -44,29 +42,11 @@ app.post("/agendar", (req, res) => {
   pool.query(
     sql,
     [nome_cliente, telefone, data_agendamento, horario, servico, barbeiro],
-    async (err, result) => {
+    (err, result) => {
       if (err) {
         console.error("Erro ao inserir no banco:", err);
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
-
-      const client = new twilio(
-        process.env.TWILIO_ACCOUNT_SID,
-        process.env.TWILIO_AUTH_TOKEN
-      );
-      const mensagem = `Olá ${nome_cliente}, seu agendamento para ${servico} com ${barbeiro} foi confirmado para ${data_agendamento} às ${horario}.`;
-
-      try {
-        const message = await client.messages.create({
-          body: mensagem,
-          from: process.env.TWILIO_PHONE_NUMBER,
-          to: `+55${telefone}`,
-        });
-        console.log("SMS enviado com sucesso:", message.sid);
-      } catch (error) {
-        console.error("Erro ao enviar SMS:", error);
-      }
-
       res.status(201).json({ message: "Agendamento criado com sucesso!" });
     }
   );
