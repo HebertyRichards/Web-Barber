@@ -93,9 +93,10 @@ function Agendamento() {
     ];
 
     const horaAtual = new Date();
-    const horaAtualFormatada = `${horaAtual.getHours()}:${String(
-      horaAtual.getMinutes()
-    ).padStart(2, "0")}`;
+    const horaAtualFormatada = `${String(horaAtual.getHours()).padStart(
+      2,
+      "0"
+    )}:${String(horaAtual.getMinutes()).padStart(2, "0")}`;
     const dataAtual = `${horaAtual.getFullYear()}-${String(
       horaAtual.getMonth() + 1
     ).padStart(2, "0")}-${String(horaAtual.getDate()).padStart(2, "0")}`;
@@ -104,11 +105,9 @@ function Agendamento() {
 
     return horarios
       .filter((horario) => {
-        // Se for o dia atual, filtra para exibir apenas os horários após a hora atual
         if (horarioDeHoje) {
           return horario > horaAtualFormatada;
         }
-        // Se for o dia seguinte, exibe todos os horários
         return true;
       })
       .map((horario) => (
