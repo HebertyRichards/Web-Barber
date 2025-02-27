@@ -104,9 +104,11 @@ function Agendamento() {
 
     return horarios
       .filter((horario) => {
+        // Se for o dia atual, filtra para exibir apenas os horários após a hora atual
         if (horarioDeHoje) {
           return horario > horaAtualFormatada;
         }
+        // Se for o dia seguinte, exibe todos os horários
         return true;
       })
       .map((horario) => (
