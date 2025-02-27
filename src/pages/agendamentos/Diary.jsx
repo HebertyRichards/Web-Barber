@@ -5,6 +5,11 @@ import "../../style.css";
 
 function Agendamento() {
   const [data, setData] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [nome, setNome] = useState("");
+  const [horario, setHorario] = useState("");
+  const [servico, setServico] = useState("");
+  const [barbeiro, setBarbeiro] = useState("");
 
   useEffect(() => {
     setData(getDataAtual());
@@ -14,13 +19,44 @@ function Agendamento() {
     return new Date().toISOString().split("T")[0];
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const agendamento = {
+      nome_cliente: nome,
+      telefone,
+      data_agendamento: data,
+      horario,
+      servico,
+      barbeiro,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3001/agendar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(agendamento),
+      });
+
+      if (response.ok) {
+        alert("Agendamento realizado com sucesso!");
+      } else {
+        alert("Erro ao agendar, tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar agendamento:", error);
+    }
+  };
+
   return (
     <>
       <div className="back2">
         <Active />
       </div>
       <div className="back-forms">
-        <form id="formulario">
+        <form id="formulario" onSubmit={handleSubmit}>
           <div className="num-date">
             <input
               type="tel"
@@ -28,13 +64,17 @@ function Agendamento() {
               name="telefone"
               required
               placeholder="Telefone com DD"
-            ></input>
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+            />
             <input
               type="text"
               id="nome"
               name="nome"
               placeholder="Seu Nome"
-            ></input>
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
           </div>
           <div className="date-hour">
             <input
@@ -45,7 +85,13 @@ function Agendamento() {
               onChange={(e) => setData(e.target.value)}
               required
             />
-            <select id="horario" name="horario" required>
+            <select
+              id="horario"
+              name="horario"
+              required
+              value={horario}
+              onChange={(e) => setHorario(e.target.value)}
+            >
               <option value="">Horário</option>
               <option value="08:00">08:00</option>
               <option value="08:30">08:30</option>
@@ -55,23 +101,6 @@ function Agendamento() {
               <option value="10:30">10:30</option>
               <option value="11:00">11:00</option>
               <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-              <option value="15:00">15:00</option>
-              <option value="15:30">15:30</option>
-              <option value="16:00">16:00</option>
-              <option value="16:30">16:30</option>
-              <option value="17:00">17:00</option>
-              <option value="17:30">17:30</option>
-              <option value="18:00">18:00</option>
-              <option value="18:30">18:30</option>
-              <option value="19:00">19:00</option>
-              <option value="19:30">19:30</option>
-              <option value="20:00">20:00</option>
             </select>
           </div>
           <div className="cut-info">
@@ -79,7 +108,8 @@ function Agendamento() {
               id="servico"
               name="servico"
               required
-              placeholder="Selecione um Serviço"
+              value={servico}
+              onChange={(e) => setServico(e.target.value)}
             >
               <option value="">Selecione</option>
               <option value="corte">Corte - R$35,00</option>
@@ -100,7 +130,8 @@ function Agendamento() {
               id="barbeiro"
               name="barbeiro"
               required
-              placeholder="Selecione um Barbeiro"
+              value={barbeiro}
+              onChange={(e) => setBarbeiro(e.target.value)}
             >
               <option value="">Selecione</option>
               <option value="joao">João</option>
