@@ -32,7 +32,7 @@ function Agendamento() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/agendar", {
+      const response = await fetch("web-barber-production.up.railway.app", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
