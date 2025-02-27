@@ -100,14 +100,19 @@ function Agendamento() {
     const dataAtual = `${horaAtual.getFullYear()}-${String(
       horaAtual.getMonth() + 1
     ).padStart(2, "0")}-${String(horaAtual.getDate()).padStart(2, "0")}`;
+    const dataSelecionada = data; // Data selecionada no input
 
-    const horarioDeHoje = dataAtual === getDataAtual();
+    // Verifica se a data selecionada é o dia atual ou posterior
+    const isHoje = dataSelecionada === dataAtual;
+    const isPosterior = dataSelecionada > dataAtual;
 
     return horarios
       .filter((horario) => {
-        if (horarioDeHoje) {
+        if (isHoje) {
+          // Para o dia atual, filtra horários após o horário atual
           return horario > horaAtualFormatada;
         }
+        // Para os dias posteriores, todos os horários são válidos
         return true;
       })
       .map((horario) => (
