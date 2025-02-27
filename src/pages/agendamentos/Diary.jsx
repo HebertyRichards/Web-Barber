@@ -33,7 +33,7 @@ function Agendamento() {
 
     try {
       const response = await fetch(
-        "https://web-barber-production.up.railway.app/agendar",
+        "web-barber-production.up.railway.app:8080/agendar",
         {
           method: "POST",
           headers: {
