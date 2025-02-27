@@ -51,6 +51,19 @@ function Agendamento() {
     }
   };
 
+  const formatarTelefone = (valor) => {
+    valor = valor.replace(/\D/g, ""); // Remove caracteres não numéricos
+
+    if (valor.length > 2) {
+      valor = `(${valor.slice(0, 2)}) ${valor.slice(2)}`;
+    }
+    if (valor.length > 10) {
+      valor = `${valor.slice(0, 10)}-${valor.slice(10, 14)}`;
+    }
+
+    return valor;
+  };
+
   return (
     <>
       <div className="back2">
@@ -66,7 +79,7 @@ function Agendamento() {
               required
               placeholder="Telefone com DD"
               value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
+              onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
             />
             <input
               type="text"
@@ -102,6 +115,22 @@ function Agendamento() {
               <option value="10:30">10:30</option>
               <option value="11:00">11:00</option>
               <option value="11:30">11:30</option>
+              <option value="11:30">12:00</option>
+              <option value="11:30">12:30</option>
+              <option value="11:30">13:00</option>
+              <option value="11:30">13:30</option>
+              <option value="11:30">14:00</option>
+              <option value="11:30">14:30</option>
+              <option value="11:30">15:00</option>
+              <option value="11:30">15:30</option>
+              <option value="11:30">16:00</option>
+              <option value="11:30">16:30</option>
+              <option value="11:30">17:00</option>
+              <option value="11:30">17:30</option>
+              <option value="11:30">18:00</option>
+              <option value="11:30">18:30</option>
+              <option value="11:30">19:00</option>
+              <option value="11:30">19:30</option>
             </select>
           </div>
           <div className="cut-info">

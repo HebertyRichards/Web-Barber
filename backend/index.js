@@ -42,11 +42,34 @@ app.post("/agendar", (req, res) => {
   pool.query(
     sql,
     [nome_cliente, telefone, data_agendamento, horario, servico, barbeiro],
-    (err, result) => {
+    async (err, result) => {
       if (err) {
         console.error("Erro ao inserir no banco:", err);
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
+
+      // ✅ Enviar SMS usando Textbelt
+      try {
+        const response = await fetch("https://textbelt.com/text", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            phone: `+55${telefone}`, // Formato: +55 (código do Brasil) + número
+            message: `Olá ${nome_cliente}, seu agendamento para ${servico} com ${barbeiro} foi confirmado para ${data_agendamento} às ${horario}.`,
+            key: "textbelt", // Chave de teste gratuita
+          }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          console.log("SMS enviado com sucesso!");
+        } else {
+          console.error("Erro ao enviar SMS:", result);
+        }
+      } catch (smsError) {
+        console.error("Erro ao processar envio de SMS:", smsError);
+      }
+
       res.status(201).json({ message: "Agendamento criado com sucesso!" });
     }
   );
