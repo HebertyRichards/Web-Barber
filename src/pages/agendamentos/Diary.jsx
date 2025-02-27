@@ -7,6 +7,7 @@ function Agendamento() {
   const [data, setData] = useState("");
   const [telefone, setTelefone] = useState("");
   const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
   const [horario, setHorario] = useState("");
   const [servico, setServico] = useState("");
   const [barbeiro, setBarbeiro] = useState("");
@@ -22,9 +23,15 @@ function Agendamento() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!telefone && !email) {
+      alert("Por favor, preencha o telefone ou o email.");
+      return;
+    }
+
     const agendamento = {
       nome_cliente: nome,
       telefone,
+      email,
       data_agendamento: data,
       horario,
       servico,
@@ -100,19 +107,16 @@ function Agendamento() {
     const dataAtual = `${horaAtual.getFullYear()}-${String(
       horaAtual.getMonth() + 1
     ).padStart(2, "0")}-${String(horaAtual.getDate()).padStart(2, "0")}`;
-    const dataSelecionada = data; // Data selecionada no input
+    const dataSelecionada = data;
 
-    // Verifica se a data selecionada é o dia atual ou posterior
     const isHoje = dataSelecionada === dataAtual;
     const isPosterior = dataSelecionada > dataAtual;
 
     return horarios
       .filter((horario) => {
         if (isHoje) {
-          // Para o dia atual, filtra horários após o horário atual
           return horario > horaAtualFormatada;
         }
-        // Para os dias posteriores, todos os horários são válidos
         return true;
       })
       .map((horario) => (
@@ -146,6 +150,16 @@ function Agendamento() {
               placeholder="Seu Nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
+            />
+          </div>
+          <div className="email-fintos">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Seu Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="date-hour">

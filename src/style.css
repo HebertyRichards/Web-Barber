@@ -413,7 +413,8 @@ button[type="submit"]:hover,
 }
 
 #nome,
-#telefone {
+#telefone,
+#email {
   border: none;
   background-color: transparent;
   border: none;
@@ -424,14 +425,22 @@ button[type="submit"]:hover,
   outline: none;
 }
 
-#nome,
+#email {
+  width: 400px;
+}
+
+#nome {
+  margin-left: 10px;
+}
+
 .cut-infos,
 .barber-infos {
   margin: 10px;
 }
 
 #nome::placeholder,
-#telefone::placeholder {
+#telefone::placeholder,
+#email::placeholder {
   color: rgb(158, 158, 158);
   font-weight: bold;
 }
@@ -701,9 +710,20 @@ footer img {
   }
 
   #formulario {
+    display: flex;
+    align-items: first baseline;
     width: 90%;
   }
 
+  #servico {
+    margin: 0px;
+    width: 80%;
+  }
+
+  #nome {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
   .date-hour #horario,
   .date-hour input[type="date"] {
     margin-left: 0px;
@@ -738,6 +758,9 @@ footer img {
     margin-top: 10%;
   }
 
+  #email {
+    width: 100%;
+  }
   footer {
     padding: 15px;
     gap: 15px;

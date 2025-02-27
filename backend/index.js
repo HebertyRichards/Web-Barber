@@ -30,18 +30,33 @@ app.post("/agendar", (req, res) => {
   const {
     nome_cliente,
     telefone,
+    email,
     data_agendamento,
     horario,
     servico,
     barbeiro,
   } = req.body;
 
+  if (!telefone && !email) {
+    return res
+      .status(400)
+      .json({ message: "Por favor, preencha o telefone ou o email." });
+  }
+
   const sql =
-    "INSERT INTO agendamentos (nome_cliente, telefone, data_agendamento, horario, servico, barbeiro) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO agendamentos (nome_cliente, telefone, email, data_agendamento, horario, servico, barbeiro) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
   pool.query(
     sql,
-    [nome_cliente, telefone, data_agendamento, horario, servico, barbeiro],
+    [
+      nome_cliente,
+      telefone,
+      email,
+      data_agendamento,
+      horario,
+      servico,
+      barbeiro,
+    ],
     (err, result) => {
       if (err) {
         console.error("Erro ao inserir no banco:", err);
