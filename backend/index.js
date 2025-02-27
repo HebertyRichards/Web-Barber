@@ -7,10 +7,10 @@ app.use(express.json());
 app.use(cors());
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Qpdwsl55@",
-  database: "agendamento",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 });
 
 connection.connect((err) => {
@@ -18,10 +18,9 @@ connection.connect((err) => {
     console.error("Erro ao conectar ao MySQL:", err);
     return;
   }
-  console.log("✅ Conectado ao MySQL");
+  console.log("Conectado ao MySQL");
 });
 
-// 🔹 Rota para salvar o agendamento no banco
 app.post("/agendar", (req, res) => {
   const {
     nome_cliente,
