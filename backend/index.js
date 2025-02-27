@@ -7,9 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://web-barber-xi.vercel.app/agendamento",
+    origin: "https://web-barber-xi.vercel.app",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
+    credentials: true,
   })
 );
 
@@ -50,6 +51,6 @@ app.post("/agendar", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
