@@ -36,7 +36,7 @@ const transporter = nodemailer.createTransport({
 
 function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
   const mailOptions = {
-    from: "your-email@sendgrid.com",
+    from: "heberynho@gmail.com",
     to: clienteEmail,
     subject: "Confirmação de Agendamento",
     text: `Olá ${nome},\n\nSeu agendamento foi confirmado!\n\nData: ${data}\nHorário: ${horario}\nServiço: ${servico}\nBarbeiro: ${barbeiro}\n\nObrigado!`,
