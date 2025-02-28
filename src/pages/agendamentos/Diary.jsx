@@ -138,7 +138,6 @@ function Agendamento() {
               type="tel"
               id="telefone"
               name="telefone"
-              required
               placeholder="Telefone com DD"
               value={telefone}
               onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
@@ -148,11 +147,12 @@ function Agendamento() {
               id="nome"
               name="nome"
               placeholder="Seu Nome"
+              required
               value={nome}
               onChange={(e) => setNome(e.target.value)}
             />
           </div>
-          <div className="email-fintos">
+          <div className="email-infos">
             <input
               type="email"
               id="email"

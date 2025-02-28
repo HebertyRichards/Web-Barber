@@ -3,6 +3,7 @@ import Home from "./pages/index/Home";
 import Agendamento from "./pages/agendamentos/Diary";
 import Produtos from "./pages/produtos/Product";
 import Servicos from "./pages/servicos/Service";
+import CancelarAgendamento from "./pages/apagar/DelDiary";
 
 function AppRoutes() {
   return (
@@ -12,6 +13,10 @@ function AppRoutes() {
         <Route path="/agendamento" element={<Agendamento />}></Route>
         <Route path="/produtos" element={<Produtos />}></Route>
         <Route path="/servicos" element={<Servicos />}></Route>
+        <Route
+          path="/cancelar-agendamento"
+          element={<CancelarAgendamento />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

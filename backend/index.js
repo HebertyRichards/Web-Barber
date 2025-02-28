@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const SibApiV3Sdk = require("sib-api-v3-sdk");
+const nodemailer = require("nodemailer");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -27,30 +27,15 @@ const pool = mysql.createPool({
   connectTimeout: 10000,
 });
 
-var defaultClient = SibApiV3Sdk.ApiClient.instance;
-var apiKey = defaultClient.authentications["api-key"];
-apiKey.apiKey = process.env.BREVO_API_KEY;
-
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
-function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
-  const email = {
-    sender: { email: "kakashi.ragnar@gmail.com" },
-    to: [{ email: clienteEmail }],
-    subject: "Confirmação de Agendamento",
-    textContent: `Olá ${nome},\n\nSeu agendamento foi confirmado!\n\nData: ${data}\nHorário: ${horario}\nServiço: ${servico}\nBarbeiro: ${barbeiro}\n\nObrigado!`,
-    htmlContent: `<p>Olá ${nome},</p><p>Seu agendamento foi confirmado!</p><p>Data: ${data}</p><p>Horário: ${horario}</p><p>Serviço: ${servico}</p><p>Barbeiro: ${barbeiro}</p><p>Obrigado!</p>`,
-  };
-
-  apiInstance
-    .sendTransacEmail(email)
-    .then((response) => {
-      console.log("E-mail enviado com sucesso:", response);
-    })
-    .catch((err) => {
-      console.log("Erro ao enviar e-mail:", err);
-    });
-}
+const transport = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 app.post("/agendar", (req, res) => {
   const {
@@ -89,18 +74,32 @@ app.post("/agendar", (req, res) => {
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
 
-      if (email) {
-        enviarEmail(
-          email,
-          nome_cliente,
-          data_agendamento,
-          horario,
-          servico,
-          barbeiro
-        );
-      }
+      const mailOptions = {
+        from: "Web Barber-Shop <" + process.env.EMAIL_USER + ">",
+        to: email,
+        subject: "Agendamento Confirmado!",
+        html: `
+          <h1>Agendamento Concluído</h1> 
+          <p>Olá ${nome_cliente}, seu agendamento foi concluído no dia ${data_agendamento} às ${horario} com o barbeiro ${barbeiro}.</p>
+          <p>Segue o serviço agendado:</p>
+          <ul>
+            <li>${servico}</li>
+          </ul>
+          <p>A barbearia Web Barber-Shop agradece a preferência. Venha ficar novo de novo!</p>
+        `,
+      };
 
-      res.status(201).json({ message: "Agendamento criado com sucesso!" });
+      transport.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error("Erro ao enviar e-mail:", error);
+          return res
+            .status(500)
+            .json({ message: "Agendamento salvo, mas erro ao enviar e-mail." });
+        }
+        res.status(201).json({
+          message: "Agendamento criado e e-mail enviado com sucesso!",
+        });
+      });
     }
   );
 });
