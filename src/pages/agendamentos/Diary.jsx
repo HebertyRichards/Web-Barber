@@ -194,7 +194,6 @@ function Agendamento() {
               <option value="corte">Corte - R$35,00</option>
               <option value="barba">Barba - R$30,00</option>
               <option value="corte_barba">Bigode - R$5,00</option>
-              <option value="corte_barba">Sobrancelha - R$5,00</option>
               <option value="corte_barba">Corte + Barba - R$60,00</option>
               <option value="corte_barba">
                 Corte + Bigode + Sobrancelha - R$40,00
