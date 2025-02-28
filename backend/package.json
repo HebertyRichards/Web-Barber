@@ -17,6 +17,7 @@
     "express": "^4.21.2",
     "mysql2": "^3.12.0",
     "node-fetch": "^3.3.2",
+    "nodemailer": "^6.10.0",
     "twilio": "^5.4.5"
   }
 }

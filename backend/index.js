@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
+const nodemailer = require("nodemailer");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -25,6 +26,30 @@ const pool = mysql.createPool({
   queueLimit: 0,
   connectTimeout: 10000,
 });
+
+const transporter = nodemailer.createTransport({
+  service: "SendGrid",
+  auth: {
+    apiKey: process.env.SENDGRID_API_KEY,
+  },
+});
+
+function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
+  const mailOptions = {
+    from: "your-email@sendgrid.com",
+    to: clienteEmail,
+    subject: "Confirmação de Agendamento",
+    text: `Olá ${nome},\n\nSeu agendamento foi confirmado!\n\nData: ${data}\nHorário: ${horario}\nServiço: ${servico}\nBarbeiro: ${barbeiro}\n\nObrigado!`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log("Erro ao enviar e-mail:", error);
+    } else {
+      console.log("E-mail enviado:", info.response);
+    }
+  });
+}
 
 app.post("/agendar", (req, res) => {
   const {
@@ -62,6 +87,18 @@ app.post("/agendar", (req, res) => {
         console.error("Erro ao inserir no banco:", err);
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
+
+      if (email) {
+        enviarEmail(
+          email,
+          nome_cliente,
+          data_agendamento,
+          horario,
+          servico,
+          barbeiro
+        );
+      }
+
       res.status(201).json({ message: "Agendamento criado com sucesso!" });
     }
   );
