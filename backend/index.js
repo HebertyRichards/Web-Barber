@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const { TransactionalAPI } = require("@sendinblue/client");
+const { TransactionalEmailsApi } = require("@sendinblue/client");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -27,9 +27,8 @@ const pool = mysql.createPool({
   connectTimeout: 10000,
 });
 
-const apiInstance = new TransactionalAPI();
-apiInstance.apiClient.authentications["api-key"].apiKey =
-  process.env.BREVO_API_KEY;
+const apiInstance = new TransactionalEmailsApi();
+apiInstance.apiClient.setApiKey("api-key", process.env.BREVO_API_KEY);
 
 function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
   const email = {
