@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const { TransactionalEmailsApi } = require("@sendinblue/client");
+const SibApiV3Sdk = require("sib-api-v3-sdk");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -27,8 +27,11 @@ const pool = mysql.createPool({
   connectTimeout: 10000,
 });
 
-const apiInstance = new TransactionalEmailsApi();
-apiInstance.apiClient.setApiKey("api-key", process.env.BREVO_API_KEY);
+var defaultClient = SibApiV3Sdk.ApiClient.instance;
+var apiKey = defaultClient.authentications["api-key"];
+apiKey.apiKey = process.env.BREVO_API_KEY;
+
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
   const email = {
