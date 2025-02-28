@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const nodemailer = require("nodemailer");
+const { TransactionalAPI } = require("@sendinblue/client");
 require("dotenv").config({ path: "./.env" });
 
 const app = express();
@@ -27,28 +27,27 @@ const pool = mysql.createPool({
   connectTimeout: 10000,
 });
 
-const transporter = nodemailer.createTransport({
-  service: "SendGrid",
-  auth: {
-    apiKey: process.env.SENDGRID_API_KEY,
-  },
-});
+const apiInstance = new TransactionalAPI();
+apiInstance.apiClient.authentications["api-key"].apiKey =
+  process.env.BREVO_API_KEY;
 
 function enviarEmail(clienteEmail, nome, data, horario, servico, barbeiro) {
-  const mailOptions = {
-    from: "heberynho@gmail.com",
-    to: clienteEmail,
+  const email = {
+    sender: { email: "kakashi.ragnar@gmail.com" },
+    to: [{ email: clienteEmail }],
     subject: "Confirmação de Agendamento",
-    text: `Olá ${nome},\n\nSeu agendamento foi confirmado!\n\nData: ${data}\nHorário: ${horario}\nServiço: ${servico}\nBarbeiro: ${barbeiro}\n\nObrigado!`,
+    textContent: `Olá ${nome},\n\nSeu agendamento foi confirmado!\n\nData: ${data}\nHorário: ${horario}\nServiço: ${servico}\nBarbeiro: ${barbeiro}\n\nObrigado!`,
+    htmlContent: `<p>Olá ${nome},</p><p>Seu agendamento foi confirmado!</p><p>Data: ${data}</p><p>Horário: ${horario}</p><p>Serviço: ${servico}</p><p>Barbeiro: ${barbeiro}</p><p>Obrigado!</p>`,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Erro ao enviar e-mail:", error);
-    } else {
-      console.log("E-mail enviado:", info.response);
-    }
-  });
+  apiInstance
+    .sendTransacEmail(email)
+    .then((response) => {
+      console.log("E-mail enviado com sucesso:", response);
+    })
+    .catch((err) => {
+      console.log("Erro ao enviar e-mail:", err);
+    });
 }
 
 app.post("/agendar", (req, res) => {
