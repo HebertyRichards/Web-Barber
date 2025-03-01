@@ -73,12 +73,12 @@ app.post("/agendar", (req, res) => {
         console.error("Erro ao inserir no banco:", err);
         return res.status(500).json({ message: "Erro ao salvar agendamento" });
       }
-
-      const mailOptions = {
-        from: "Web Barber-Shop <" + process.env.EMAIL_USER + ">",
-        to: email,
-        subject: "Agendamento Confirmado!",
-        html: `
+      if (email) {
+        const mailOptions = {
+          from: "Web Barber-Shop <" + process.env.EMAIL_USER + ">",
+          to: email,
+          subject: "Agendamento Confirmado!",
+          html: `
           <h1>Agendamento Concluído</h1> 
           <p>Olá ${nome_cliente}, seu agendamento foi concluído no dia ${data_agendamento} às ${horario} com o barbeiro ${barbeiro}.</p>
           <p>Segue o serviço agendado:</p>
@@ -87,19 +87,25 @@ app.post("/agendar", (req, res) => {
           </ul>
           <p>A barbearia Web Barber-Shop agradece a preferência. Venha ficar novo de novo!</p>
         `,
-      };
-
-      transport.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error("Erro ao enviar e-mail:", error);
-          return res
-            .status(500)
-            .json({ message: "Agendamento salvo, mas erro ao enviar e-mail." });
-        }
-        res.status(201).json({
-          message: "Agendamento criado e e-mail enviado com sucesso!",
+        };
+        transport.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error("Erro ao enviar e-mail:", error);
+            return res
+              .status(500)
+              .json({
+                message: "Agendamento salvo, mas erro ao enviar e-mail.",
+              });
+          }
+          res.status(201).json({
+            message: "Agendamento criado e e-mail enviado com sucesso!",
+          });
         });
-      });
+      } else {
+        return res.status(201).json({
+          message: "Agendamento criado com sucesso!",
+        });
+      }
     }
   );
 });
