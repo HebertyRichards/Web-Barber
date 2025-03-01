@@ -37,44 +37,62 @@ const MainProduct = () => {
       >
         <SwiperSlide>
           <div className="slide2">
+            <img src="./assets/corte1.png" alt="Corte"></img>
             <h2>Corte</h2>
             <p>R$ 30,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
+            <img src="./assets/barba.png" alt="Corte"></img>
             <h2>Barba</h2>
-            <p>R$ 10,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <p>R$ 20,00</p>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
-            <h2>Sobrancelha</h2>
-            <p>R$ 5,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <img src="./assets/luzes.png" alt="Corte"></img>
+            <h2>Luzes</h2>
+            <p>R$ 65,00</p>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
+            <img src="./assets/penteado.png" alt="Corte"></img>
             <h2>Penteado</h2>
             <p>R$ 20,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
-            <h2>Platinado</h2>
-            <p>R$ 100,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <img src="./assets/bigode.png" alt="Corte"></img>
+            <h2>Bigode</h2>
+            <p>R$ 10,00</p>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="slide2">
-            <h2>Progressiva</h2>
-            <p>R$ 70,00</p>
-            <a className="redirect" href='/agendamento'>Agendar</a>
+            <img src="./assets/hidratacao.png" alt="Corte"></img>
+            <h2>Hidratação</h2>
+            <p>R$ 15,00</p>
+            <a className="redirect" href="/agendamento">
+              Agendar
+            </a>
           </div>
         </SwiperSlide>
         <div className="custom-navigation2">
