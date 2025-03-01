@@ -121,7 +121,7 @@ app.delete("/cancelar-agendamento/:id", (req, res) => {
       .json({ message: "ID do agendamento é obrigatório." });
   }
 
-  const sql = "DELETE FROM agendamentos WHERE id = ?";
+  const sql = "DELETE FROM agendamentos WHERE id_agendamento = ?";
 
   pool.query(sql, [idAgendamento], (err, result) => {
     if (err) {
