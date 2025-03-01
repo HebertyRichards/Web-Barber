@@ -18,32 +18,35 @@ const pool = mysql.createPool({
   connectTimeout: 10000,
 });
 
-app.delete("/api/cancelar-agendamento/:id", (req, res) => {
-  const idAgendamento = req.params.id;
+app.delete(
+  "https://web-barber-xi.vercel.app/cancelar-agendamento/:id",
+  (req, res) => {
+    const idAgendamento = req.params.id;
 
-  if (!idAgendamento) {
-    return res
-      .status(400)
-      .json({ message: "ID do agendamento é obrigatório." });
-  }
-
-  const sql = "DELETE FROM agendamentos WHERE id = ?";
-
-  pool.query(sql, [idAgendamento], (err, result) => {
-    if (err) {
-      console.error("Erro ao deletar agendamento:", err);
+    if (!idAgendamento) {
       return res
-        .status(500)
-        .json({ message: "Erro ao cancelar o agendamento." });
+        .status(400)
+        .json({ message: "ID do agendamento é obrigatório." });
     }
 
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "Agendamento não encontrado." });
-    }
+    const sql = "DELETE FROM agendamentos WHERE id = ?";
 
-    res.status(200).json({ message: "Agendamento cancelado com sucesso!" });
-  });
-});
+    pool.query(sql, [idAgendamento], (err, result) => {
+      if (err) {
+        console.error("Erro ao deletar agendamento:", err);
+        return res
+          .status(500)
+          .json({ message: "Erro ao cancelar o agendamento." });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Agendamento não encontrado." });
+      }
+
+      res.status(200).json({ message: "Agendamento cancelado com sucesso!" });
+    });
+  }
+);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
