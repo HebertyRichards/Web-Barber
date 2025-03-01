@@ -306,13 +306,15 @@ button[type="submit"]:hover,
 }
 
 .info-prods h2,
-.info-services h2 {
+.info-services h2,
+.back-forms h2 {
   font-size: 2.5em;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .info-prods p,
-.info-services p {
+.info-services p,
+.back-forms p {
   font-size: 1.5em;
 }
 
@@ -403,6 +405,7 @@ button[type="submit"]:hover,
   align-items: center;
   width: 50%;
   margin: 0 auto;
+  margin-top: 2%;
 }
 
 .date-hour #horario,
@@ -469,6 +472,7 @@ button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.4s ease;
   text-decoration: none;
+  margin-top: 2%;
 }
 
 .catalog-services,
@@ -510,6 +514,11 @@ button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.4s ease;
   text-decoration: none;
+}
+
+.back-forms h2,
+.back-forms p {
+  text-align: center;
 }
 
 footer {
@@ -621,7 +630,8 @@ footer img {
   }
 
   .info-services h2,
-  .info-prods h2 {
+  .info-prods h2,
+  .back-forms h2 {
     font-size: 2em;
   }
 
@@ -744,12 +754,14 @@ footer img {
   }
 
   .info-services h2,
-  .info-prods h2 {
+  .info-prods h2,
+  .back-forms h2 {
     font-size: 1.5em;
   }
 
   .info-prods p,
-  .info-services p {
+  .info-services p,
+  .back-forms p {
     font-size: 1em;
   }
 

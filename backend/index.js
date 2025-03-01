@@ -91,11 +91,9 @@ app.post("/agendar", (req, res) => {
         transport.sendMail(mailOptions, (error, info) => {
           if (error) {
             console.error("Erro ao enviar e-mail:", error);
-            return res
-              .status(500)
-              .json({
-                message: "Agendamento salvo, mas erro ao enviar e-mail.",
-              });
+            return res.status(500).json({
+              message: "Agendamento salvo, mas erro ao enviar e-mail.",
+            });
           }
           res.status(201).json({
             message: "Agendamento criado e e-mail enviado com sucesso!",
