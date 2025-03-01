@@ -37,6 +37,7 @@ const transport = nodemailer.createTransport({
   },
 });
 
+// Rota para criar um agendamento
 app.post("/agendar", (req, res) => {
   const {
     nome_cliente,
@@ -85,6 +86,8 @@ app.post("/agendar", (req, res) => {
           <ul>
             <li>${servico}</li>
           </ul>
+          <p>O código do seu agendamento é: <strong>${result.insertId}</strong></p>
+          <p>Para cancelar, acesse <a href="https://web-barber-xi.vercel.app/cancelar-agendamento">Cancelar Agendamento</a> e insira o código.</p>
           <p>A barbearia Web Barber-Shop agradece a preferência. Venha ficar novo de novo!</p>
         `,
         };
@@ -106,6 +109,34 @@ app.post("/agendar", (req, res) => {
       }
     }
   );
+});
+
+// Rota para cancelar um agendamento
+app.delete("/cancelar-agendamento/:id", (req, res) => {
+  const idAgendamento = req.params.id;
+
+  if (!idAgendamento) {
+    return res
+      .status(400)
+      .json({ message: "ID do agendamento é obrigatório." });
+  }
+
+  const sql = "DELETE FROM agendamentos WHERE id = ?";
+
+  pool.query(sql, [idAgendamento], (err, result) => {
+    if (err) {
+      console.error("Erro ao deletar agendamento:", err);
+      return res
+        .status(500)
+        .json({ message: "Erro ao cancelar o agendamento." });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Agendamento não encontrado." });
+    }
+
+    res.status(200).json({ message: "Agendamento cancelado com sucesso!" });
+  });
 });
 
 const PORT = process.env.PORT || 8080;
